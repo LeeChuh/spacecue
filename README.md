@@ -45,14 +45,13 @@ For running evaluations, go to `baselines/accuracy_check.ipynb` notebook and ent
 
 ```python
 # parameters you want to change
-METHOD = "spacecue"
-FIELD = "Math"
-MODEL = "gpt
+METHOD = "spacecue" # chosen from ["cot", "zero-shot", "io", "scaffold", "spacecue"]
+FIELD = "Math" # chosen from  ['Physics', 'Chemistry', 'Biology', 'Math']
+MODEL = "gpt" # chosen from ["gpt", "opus"]
 
 # path of the result
 path = f"""../results/{METHOD}/{FIELD}_validation_{MODEL}.jsonl"""
 
-# counter
 count, corr = 0, 0
 with open(path, "r") as f:
     for idx, l in tqdm(enumerate(f)):
@@ -64,5 +63,4 @@ with open(path, "r") as f:
         result_list.append(gpt_answer)
 
 print(f"Accuracy os {corr/count * 100:.2f}%")
-print(f"corr: {corr}, count: {count}")
 ```
